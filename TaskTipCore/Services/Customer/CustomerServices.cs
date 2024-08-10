@@ -47,6 +47,12 @@ public class CustomerServices:RepositoryBase<TaskTipDataLayer.Entity.Customer>,I
 
         var _customer = CommonExtention.Mapto<CustomerDto, TaskTipDataLayer.Entity.Customer>(customerDto);
         _customer.ID = ID;
+        if (!_TaskTipContext.Customers_List.Any(c => c.ID != ID))
+        {
+            result = OperationResult.Error("یافت نشد");
+            result.Status = OperationResult.OpreationResultStatus.NotFound;
+            return result;
+        }
         if (_TaskTipContext.Customers_List.Any(c => c.Email == _customer.Email && c.ID !=_customer.ID))
         {
             result = OperationResult.Error("ایمیل در دیتابیس وجود دارد ", "مورد تکراری");

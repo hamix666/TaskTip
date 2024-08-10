@@ -13,7 +13,7 @@ public class CustomerDto
     [Required(ErrorMessage = "اجباری")]
     public string LName { get; set; }
     [DisplayName("تاریخ تولد")]
-    [RegularExpression(@"\d{4}-\d{2}-\d{2}", ErrorMessage = "فرمت تاریخ تولد اشتباه است yyyy-MM-dd")]
+    
     [Required(ErrorMessage = "اجباری")]
     public DateTime DateOfBirth { get; set; }
     [DisplayName("تلفن همراه")]
